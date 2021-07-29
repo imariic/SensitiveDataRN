@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "react": "17.0.1",
-    "react-native": "0.64.2"
+    "react-native": "0.64.2",
+    "react-native-keychain": "^7.0.0",
+    "react-native-sensitive-info": "^6.0.0-alpha.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
