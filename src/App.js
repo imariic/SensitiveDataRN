@@ -1,21 +1,18 @@
+import "react-native-gesture-handler";
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-import { Register } from "./screens";
+import { View, StyleSheet } from "react-native";
+import { AppNavigator } from "./navigator";
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <View style={styles.appContainer}>
-        <Register />
-      </View>
-    </SafeAreaView>
+    <View style={styles.appContainer}>
+      <AppNavigator />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   appContainer: {
-    justifyContent: "center",
-    alignItems: "center",
     height: "100%",
   },
 });

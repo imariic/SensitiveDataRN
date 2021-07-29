@@ -7,14 +7,23 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const Register = () => {
+const Register = ({ navigation }) => {
+  const handlePress = () => {
+    navigation.navigate("Login");
+  };
+
   return (
     <View style={styles.inputContainer}>
       <TextInput style={styles.input} placeholder="Name" />
       <TextInput style={styles.input} placeholder="Surname" />
       <TextInput style={styles.input} placeholder="Nickname" />
       <TextInput style={styles.input} placeholder="Age" />
-      <TouchableOpacity style={styles.button}>
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        secureTextEntry={true}
+      />
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text>Register</Text>
       </TouchableOpacity>
     </View>
@@ -25,6 +34,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: "center",
     alignItems: "center",
+    paddingTop: 60,
   },
   input: {
     height: 40,
