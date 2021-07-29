@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -8,20 +8,64 @@ import {
 } from "react-native";
 
 const Register = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [age, setAge] = useState(10);
+  const [password, setPassword] = useState("");
+
+  const handleNameChange = (name) => {
+    setName(name);
+  };
+
+  const handleSurnameChange = (surname) => {
+    setSurname(surname);
+  };
+
+  const handleNicknameChange = (nickname) => {
+    setNickname(nickname);
+  };
+
+  const handleAgeChange = (age) => {
+    setAge(age);
+  };
+
+  const handlePasswordChange = (password) => {
+    setName(password);
+  };
+
   const handlePress = () => {
     navigation.navigate("Login");
   };
 
   return (
     <View style={styles.inputContainer}>
-      <TextInput style={styles.input} placeholder="Name" />
-      <TextInput style={styles.input} placeholder="Surname" />
-      <TextInput style={styles.input} placeholder="Nickname" />
-      <TextInput style={styles.input} placeholder="Age" />
+      <TextInput
+        style={styles.input}
+        placeholder="Name"
+        onChangeText={handleNameChange}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Surname"
+        onChangeText={handleSurnameChange}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Nickname"
+        onChangeText={handleNicknameChange}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Age"
+        keyboardType="numeric"
+        onChangeText={handleAgeChange}
+      />
       <TextInput
         style={styles.input}
         placeholder="Password"
         secureTextEntry={true}
+        onChangeText={handlePasswordChange}
       />
       <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text>Register</Text>

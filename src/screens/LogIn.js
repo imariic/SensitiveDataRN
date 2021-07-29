@@ -7,16 +7,35 @@ import {
   Text,
 } from "react-native";
 
-const LogIn = () => {
+const LogIn = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleNameChange = (name) => {
+    setName(name);
+  };
+
+  const handlePasswordChange = (password) => {
+    setSurname(password);
+  };
+
+  const handleLogIn = () => {
+    navigation.navigate("Content");
+  };
   return (
     <View style={styles.inputContainer}>
-      <TextInput style={styles.input} placeholder="Name" />
+      <TextInput
+        style={styles.input}
+        placeholder="Name"
+        onChangeText={handleNameChange}
+      />
       <TextInput
         style={styles.input}
         placeholder="Password"
         secureTextEntry={true}
+        onChangeText={handlePasswordChange}
       />
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleLogIn}>
         <Text>Login</Text>
       </TouchableOpacity>
     </View>
