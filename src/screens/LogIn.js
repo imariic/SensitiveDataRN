@@ -6,28 +6,36 @@ import {
   StyleSheet,
   Text,
 } from "react-native";
+import { logIn } from "../services";
 
 const LogIn = ({ navigation }) => {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleNameChange = (name) => {
-    setName(name);
+  const handleUsernameChange = (username) => {
+    setUsername(username);
   };
 
   const handlePasswordChange = (password) => {
-    setSurname(password);
+    setPassword(password);
   };
 
-  const handleLogIn = () => {
-    navigation.navigate("Content");
+  const handleLogIn = async () => {
+    try {
+      const isLoggedIn = await logIn({ username, password });
+      if (isLoggedIn) {
+        navigation.navigate("Content");
+      }
+    } catch (e) {
+      throw e;
+    }
   };
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.input}
-        placeholder="Name"
-        onChangeText={handleNameChange}
+        placeholder="Username"
+        onChangeText={handleUsernameChange}
       />
       <TextInput
         style={styles.input}

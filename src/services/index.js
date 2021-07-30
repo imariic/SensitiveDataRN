@@ -1,7 +1,31 @@
 import * as Keychain from "react-native-keychain";
 
-const register = async (userDetails) => {
-  const { name, surname, nickname, age, password } = userDetails;
+export const register = async (userDetails) => {
+  const { username, password } = userDetails;
 
-  await Keychain.setGenericPassword(name, password);
+  await Keychain.setGenericPassword(username, password);
+};
+
+export const logIn = async (userDetails) => {
+  const { username, password } = userDetails;
+  const credentials = await Keychain.getGenericPassword();
+
+  if (
+    credentials[username] === username &&
+    credentials[password] === password
+  ) {
+    return true;
+  }
+
+  return false;
+};
+
+export const checkIfUserExists = async () => {
+  const credentials = await Keychain.getGenericPassword();
+
+  if (credentials[username] && credentials[password]) {
+    return true;
+  }
+
+  return false;
 };
