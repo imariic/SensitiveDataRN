@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Text,
 } from "react-native";
-import { logIn } from "../services";
+import { RnKeychainService } from "../services";
 
 const LogIn = ({ navigation }) => {
   const [username, setUsername] = useState("");
@@ -22,7 +22,7 @@ const LogIn = ({ navigation }) => {
 
   const handleLogIn = async () => {
     try {
-      const isLoggedIn = await logIn({ username, password });
+      const isLoggedIn = await RnKeychainService.logIn({ username, password });
 
       if (isLoggedIn) {
         navigation.navigate("Content");

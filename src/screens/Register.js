@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { register } from "../services";
+import { RnKeychainService } from "../services";
 
 const Register = ({ navigation }) => {
   const [username, setUsername] = useState("");
@@ -22,7 +22,7 @@ const Register = ({ navigation }) => {
 
   const handlePress = async () => {
     try {
-      await register({ username, password });
+      await RnKeychainService.register({ username, password });
       navigation.navigate("Login");
     } catch (e) {
       throw e;
