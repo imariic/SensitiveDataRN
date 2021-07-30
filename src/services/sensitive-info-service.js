@@ -6,12 +6,12 @@ const keychainService = "myKeychain";
 const register = async (userDetails) => {
   const { username, password } = userDetails;
 
-  const savingUsername = await SInfo.setItem("username", username, {
+  await SInfo.setItem("username", username, {
     sharedPreferencesName: sharedPreferencesName,
     keychainService: keychainService,
   });
 
-  const savingPassword = await SInfo.setItem("password", password, {
+  await SInfo.setItem("password", password, {
     sharedPreferencesName: sharedPreferencesName,
     keychainService: keychainService,
   });
