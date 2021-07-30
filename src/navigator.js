@@ -13,22 +13,24 @@ export const AppNavigator = () => {
     RnKeychainService.checkIfUserExists().then((data) => setIfUserExists(data));
   }, []);
 
+  const renderLogIn = () => {
+    return <LogIn setIfUserExists={setIfUserExists} />;
+  };
+
+  const renderContent = () => {
+    return <Content setIfUserExists={setIfUserExists} />;
+  };
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Register">
         {!ifUserExists ? (
           <>
-            <Stack.Screen
-              name="Login"
-              component={() => <LogIn setIfUserExists={setIfUserExists} />}
-            />
+            <Stack.Screen name="Login" component={renderLogIn} />
             <Stack.Screen name="Register" component={Register} />
           </>
         ) : (
-          <Stack.Screen
-            name="Content"
-            component={() => <Content setIfUserExists={setIfUserExists} />}
-          />
+          <Stack.Screen name="Content" component={renderContent} />
         )}
       </Stack.Navigator>
     </NavigationContainer>
