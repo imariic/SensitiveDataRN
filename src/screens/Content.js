@@ -1,10 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { RnKeychainService } from "../services";
 
-const Content = () => {
+const Content = ({ setIfUserExists }) => {
+  const onHandleLogOut = () => {
+    RnKeychainService.logOut();
+    setIfUserExists(false);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>LOGIN SUCCESSFUL</Text>
+      <TouchableOpacity style={styles.button} onPress={onHandleLogOut}>
+        <Text>LOGOUT</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -19,6 +28,11 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "bold",
     color: "green",
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10,
   },
 });
 

@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { RnKeychainService } from "../services";
 
-const LogIn = ({ navigation }) => {
+const LogIn = ({ navigation, setIfUserExists }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,7 +30,7 @@ const LogIn = ({ navigation }) => {
       const isLoggedIn = await RnKeychainService.logIn({ username, password });
 
       if (isLoggedIn) {
-        navigation.navigate("Content");
+        setIfUserExists(true);
         resetInputs();
       }
     } catch (e) {

@@ -17,6 +17,10 @@ const logIn = async (userDetails) => {
   return false;
 };
 
+const logOut = async () => {
+  await Keychain.resetGenericPassword();
+};
+
 const checkIfUserExists = async () => {
   const credentials = await Keychain.getGenericPassword();
 
@@ -31,4 +35,5 @@ export default {
   register,
   logIn,
   checkIfUserExists,
+  logOut,
 };
