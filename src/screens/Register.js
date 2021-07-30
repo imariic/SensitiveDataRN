@@ -12,6 +12,11 @@ const Register = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const resetInputs = () => {
+    setUsername("");
+    setPassword("");
+  };
+
   const handleUsernameChange = (username) => {
     setUsername(username);
   };
@@ -24,6 +29,7 @@ const Register = ({ navigation }) => {
     try {
       await RnKeychainService.register({ username, password });
       navigation.navigate("Login");
+      resetInputs();
     } catch (e) {
       throw e;
     }

@@ -17,7 +17,18 @@ const logIn = async (userDetails) => {
   return false;
 };
 
+const checkIfUserExists = async () => {
+  const credentials = await Keychain.getGenericPassword();
+
+  if (credentials.username && credentials.password) {
+    return true;
+  }
+
+  return false;
+};
+
 export default {
   register,
   logIn,
+  checkIfUserExists,
 };

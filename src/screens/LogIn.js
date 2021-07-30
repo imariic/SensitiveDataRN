@@ -12,6 +12,11 @@ const LogIn = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const resetInputs = () => {
+    setUsername("");
+    setPassword("");
+  };
+
   const handleUsernameChange = (username) => {
     setUsername(username);
   };
@@ -26,6 +31,7 @@ const LogIn = ({ navigation }) => {
 
       if (isLoggedIn) {
         navigation.navigate("Content");
+        resetInputs();
       }
     } catch (e) {
       throw e;
