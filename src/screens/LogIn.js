@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Text,
 } from "react-native";
-import { RnKeychainService } from "../services";
+import { SensitiveInfoService } from "../services";
 
 const LogIn = ({ navigation, setIfUserExists }) => {
   const [username, setUsername] = useState("");
@@ -27,7 +27,10 @@ const LogIn = ({ navigation, setIfUserExists }) => {
 
   const handleLogIn = async () => {
     try {
-      const isLoggedIn = await RnKeychainService.logIn({ username, password });
+      const isLoggedIn = await SensitiveInfoService.logIn({
+        username,
+        password,
+      });
 
       if (isLoggedIn) {
         setIfUserExists(true);

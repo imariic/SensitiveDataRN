@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { RnKeychainService } from "../services";
+import { SensitiveInfoService } from "../services";
 
 const Content = ({ setIfUserExists }) => {
   const onHandleLogOut = () => {
-    RnKeychainService.logOut();
+    SensitiveInfoService.logOut();
     setIfUserExists(false);
   };
 

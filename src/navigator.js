@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { LogIn, Register, Content } from "./screens";
-import { RnKeychainService } from "./services";
+import { SensitiveInfoService } from "./services";
 
 const Stack = createStackNavigator();
 
@@ -10,7 +10,9 @@ export const AppNavigator = () => {
   const [ifUserExists, setIfUserExists] = useState(false);
 
   useEffect(() => {
-    RnKeychainService.checkIfUserExists().then((data) => setIfUserExists(data));
+    SensitiveInfoService.checkIfUserExists().then((data) =>
+      setIfUserExists(data)
+    );
   }, []);
 
   const renderLogIn = () => {
