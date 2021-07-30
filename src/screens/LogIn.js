@@ -23,6 +23,7 @@ const LogIn = ({ navigation }) => {
   const handleLogIn = async () => {
     try {
       const isLoggedIn = await logIn({ username, password });
+
       if (isLoggedIn) {
         navigation.navigate("Content");
       }
@@ -30,6 +31,7 @@ const LogIn = ({ navigation }) => {
       throw e;
     }
   };
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
