@@ -28,11 +28,7 @@ const logIn = async ({ username, password }) => {
     keychainService: keychainService,
   });
 
-  if (gettingUsername === username && gettingPassword === password) {
-    return true;
-  }
-
-  return false;
+  return gettingUsername === username && gettingPassword === password;
 };
 
 const logOut = async () => {
@@ -58,11 +54,7 @@ const checkIfUserExists = async () => {
     keychainService: keychainService,
   });
 
-  if (gettingUsername && gettingPassword) {
-    return true;
-  }
-
-  return false;
+  return gettingUsername && gettingPassword;
 };
 
 export default {

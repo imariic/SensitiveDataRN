@@ -10,11 +10,7 @@ const logIn = async (userDetails) => {
   const { username, password } = userDetails;
   const credentials = await Keychain.getGenericPassword();
 
-  if (credentials.username === username && credentials.password === password) {
-    return true;
-  }
-
-  return false;
+  return credentials.username === username && credentials.password === password;
 };
 
 const logOut = async () => {
@@ -24,11 +20,7 @@ const logOut = async () => {
 const checkIfUserExists = async () => {
   const credentials = await Keychain.getGenericPassword();
 
-  if (credentials.username && credentials.password) {
-    return true;
-  }
-
-  return false;
+  return credentials.username && credentials.password;
 };
 
 export default {
